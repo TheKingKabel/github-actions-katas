@@ -4,12 +4,12 @@ env:
   docker_password: ${{secrets.DOCKER_PASSWORD}}
   GIT_COMMIT: ${{github.sha}}
 on:
-  pull_request:
-    branches:
-      - "main"
   push:
     branches:
-      - "main"
+      - main
+  pull_request:
+    branches:
+      - main
       jobs:
         Clone-down:
           name: Clone down repo
