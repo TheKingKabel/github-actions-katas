@@ -50,11 +50,11 @@ jobs:
         with:
           name: code
           path: .
-      - name: Download code
-        uses: actions/download-artifact@v1
-        with:
-          name: code-binary
-          path: app/build/libs/app-0.1-all.jar
+      # - name: Download code
+      #   uses: actions/download-artifact@v1
+      #   with:
+      #     name: code-binary
+      #     path: app/build/libs/app-0.1-all.jar
       - name: Build docker
         run: chmod +x ci/build-docker.sh && ci/build-docker.sh
       - name: Push docker
