@@ -2,7 +2,7 @@ name: JAVA CI
 env:
   docker_username: ${{secrets.DOCKER_USERNAME}}
   docker_password: ${{secrets.DOCKER_PASSWORD}}
-  GIT_COMMIT: "Changes made towads including docker image in the workflow"
+  GIT_COMMIT: ${{"Changes made towads including docker image in the workflow"}}
 on: push
 jobs:
   Clone-down:
@@ -44,13 +44,12 @@ jobs:
   Docker-image:
     needs: Build
     runs-on: ubuntu-latest
-    container: gradle:6-jdk11
     steps:
       - name: Download code
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v1
         with:
           name: code
-          path: app/build/libs/app-0.1-all.jar
+          path: .
       - name: Build docker
         run: chmod +x ci/build-docker.sh && ci/build-docker.sh
       - name: Push docker
