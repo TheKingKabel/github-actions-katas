@@ -6,7 +6,7 @@ env:
 on: push
 jobs:
   Clone-down:
-    name: Clown down repo
+    name: Clone down repo
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
