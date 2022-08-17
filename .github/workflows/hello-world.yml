@@ -36,25 +36,25 @@ jobs:
         with: 
           name: code
           path: .
-      - name: Upload code
-        uses: actions/upload-artifact@v2
-        with:
-          name: code-binary
-          path: app/build/libs/app-0.1-all.jar
+      # - name: Upload code
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: code-binary
+      #     path: app/build/libs/app-0.1-all.jar
   Docker-image:
     needs: Build
     runs-on: ubuntu-latest
     steps:
       - name: Download repo
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v1
         with:
           name: code
           path: .
-      - name: Download code
-        uses: actions/download-artifact@v2
-        with:
-          name: code-binary
-          path: app/build/libs/app-0.1-all.jar
+      # - name: Download code
+      #   uses: actions/download-artifact@v2
+      #   with:
+      #     name: code-binary
+      #     path: app/build/libs/app-0.1-all.jar
       - name: Build docker
         run: chmod +x ci/build-docker.sh && ci/build-docker.sh
       - name: Push docker
